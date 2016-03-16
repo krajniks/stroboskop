@@ -57,8 +57,21 @@ window.addEventListener('load', function() {
 			vrednosti.push(barva.innerHTML);
 		}
 		
-		minCas = document.querySelector("#min").value;
-		maxCas = document.querySelector("#max").value;
+		minCas = parseInt(document.querySelector("#min").value);
+		maxCas = parseInt(document.querySelector("#max").value);
+		if (isNaN(minCas)|isNaN(maxCas)){
+			alert('Časovna vrednost ni celo število.');
+			return;
+		}
+		if (minCas < 0 | maxCas <0 ){
+			alert('Časovna vrednost ne sme bit manjša od nič.');
+			return;
+		}
+		if (minCas>maxCas){
+			alert('Časovni interval je napačno nastavjen. Vrednost mora naraščati ali biti enaka.');
+			return;
+		}
+		
 		spremeniBarvo(0);
 		
 		var start = document.querySelector("#start");
